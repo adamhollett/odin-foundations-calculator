@@ -1,0 +1,17 @@
+:root {
+  --font-size: 2rem;
+  --line-height: 1.6;
+
+  --font-sans: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 62.5%;
+  line-height: var(--line-height);
+  box-sizing: border-box;
+}
+
+body {
+  font-size: var(--font-size);
+}
