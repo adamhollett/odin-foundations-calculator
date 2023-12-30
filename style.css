@@ -4,12 +4,13 @@
   --space: calc(var(--font-size) * var(--line-height) / 3);
 
   --font-sans: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-mono: Consolas, "Lucida Console", Menlo, Monaco, Cousine, "Courier New", Courier, monospace;
 }
 
 html {
   font-family: var(--font-sans);
   font-size: 62.5%;
-  line-height: var(--line-height);
+  line-height: 1.2;
   box-sizing: border-box;
 }
 
@@ -41,9 +42,9 @@ div {
   display: flex;
   gap: var(--space);
   flex-direction: column;
-  height: 75%;
+  min-height: 75%;
   aspect-ratio: 2/3;
-  border-radius: var(--space);
+  border-radius: calc(var(--space) * 2);
   font-size: 5vh;
   background-color: hsl(200, 20%, 12%);
 
@@ -52,17 +53,37 @@ div {
 }
 
 .screen {
-  flex-basis: 25%;
-  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: var(--space);
+  flex-basis: 30%;
   margin: var(--space);
+  padding: var(--space) calc(var(--space) * 2);
   border-radius: var(--space);
+  font-family: var(--font-mono);
+  color: hsl(0, 0%, 8%);
   background-color: hsl(176, 60%, 80%);
+}
+
+.screen .upper {
+  /* font-size: 2.5vh; */
+  font-size: 0.6em;
+  opacity: 0.7;
+
+}
+
+.screen .lower {
+  /* font-size: 5vh; */
+  font-size: 1.2em;
 }
 
 .keys {
   display: flex;
-  gap: var(--space);
+  gap: calc(var(--space) * 1.5);
   flex: 1;
+  user-select: none;
 }
 
 .keys .row {
