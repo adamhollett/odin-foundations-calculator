@@ -1,6 +1,7 @@
 :root {
   --font-size: 2rem;
   --line-height: 1.6;
+  --space: calc(var(--font-size) * var(--line-height) / 3);
 
   --font-sans: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
@@ -12,6 +13,97 @@ html {
   box-sizing: border-box;
 }
 
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
+  height: 100vh;
+  overflow: hidden;
   font-size: var(--font-size);
+  background-color: hsl(170, 100%, 15%);
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div {
+  /* border: 2px solid red; */
+}
+
+.calculator {
+  padding: calc(var(--space) * 2);
+  display: flex;
+  gap: var(--space);
+  flex-direction: column;
+  height: 75%;
+  aspect-ratio: 2/3;
+  border-radius: var(--space);
+  font-size: 5vh;
+  background-color: hsl(200, 20%, 12%);
+
+  color: hsl(0, 0%, 92%);
+  text-align: center;
+}
+
+.screen {
+  flex-basis: 25%;
+  min-height: 15vh;
+  margin: var(--space);
+  border-radius: var(--space);
+  background-color: hsl(176, 60%, 80%);
+}
+
+.keys {
+  display: flex;
+  gap: var(--space);
+  flex: 1;
+}
+
+.keys .row {
+  display: flex;
+  justify-content: space-around;
+  gap: var(--space);
+  flex: 1;
+}
+
+.numbers, .operators {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+}
+
+.numbers {
+  flex-basis: 75%;
+}
+
+.operators {
+  flex: 1;
+}
+
+.key {
+  flex: 1;
+  border-bottom: .5rem solid hsl(200, 20%, 10%);
+  border-radius: var(--space);
+  background-color: hsl(200, 20%, 18%);
+  cursor: pointer;
+  transition: all ease 75ms;
+}
+
+.key:hover {
+  border-bottom-color: hsl(200, 20%, 60%);
+}
+
+.key:active {
+  transform: translateY(.33rem);
+}
+
+.operators .key {
+  border-radius: calc(var(--space) * 2.5);
+  background-color: hsl(200, 30%, 24%);
 }
