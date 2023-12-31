@@ -47,9 +47,6 @@ div {
   border-radius: calc(var(--space) * 2);
   font-size: 5vh;
   background-color: hsl(200, 20%, 12%);
-
-  color: hsl(0, 0%, 92%);
-  text-align: center;
 }
 
 .screen {
@@ -63,7 +60,7 @@ div {
   padding: var(--space) calc(var(--space) * 2);
   border-radius: var(--space);
   font-family: var(--font-mono);
-  color: hsl(0, 0%, 8%);
+  color: hsla(0, 0%, 8%, 0.9);
   background-color: hsl(176, 60%, 80%);
 }
 
@@ -109,8 +106,11 @@ div {
 
 .key {
   flex: 1;
+  font-size: 1em;
+  border: 0;
   border-bottom: .5rem solid hsl(200, 20%, 10%);
   border-radius: var(--space);
+  color: hsl(0, 0%, 92%);
   background-color: hsl(200, 20%, 18%);
   cursor: pointer;
   transition: all ease 75ms;
