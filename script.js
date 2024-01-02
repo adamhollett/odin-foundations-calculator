@@ -43,15 +43,12 @@ function doKey00Press() {
 }
 
 function doKeyDotPress() {
-  // TODO: Don't append a dot if there's already one on the lower screen
-  updateScreenLower(".");
+  if (!screen.lower.includes(".")) updateScreenLower(".");
 }
 
-function doKeyAddPress() {
+function doKeyAddPress() {  
   screen.upper.push(screen.lower.join(""));
-  screen.upper.push(" ");
-  screen.upper.push("+");
-  screen.upper.push(" ");
+  screen.upper.push(" + ");
   screenUpper.innerHTML = screen.upper.join("");
 
   screen.lower = ["0"];
@@ -60,9 +57,7 @@ function doKeyAddPress() {
 
 function doKeySubtractPress() {
   screen.upper.push(screen.lower.join(""));
-  screen.upper.push(" ");
-  screen.upper.push("-");
-  screen.upper.push(" ");
+  screen.upper.push(" - ");
   screenUpper.innerHTML = screen.upper.join("");
 
   screen.lower = ["0"];
@@ -71,9 +66,7 @@ function doKeySubtractPress() {
 
 function doKeyMultiplyPress() {
   screen.upper.push(screen.lower.join(""));
-  screen.upper.push(" ");
-  screen.upper.push("*");
-  screen.upper.push(" ");
+  screen.upper.push(" * ");
   screenUpper.innerHTML = screen.upper.join("");
 
   screen.lower = ["0"];
@@ -82,9 +75,7 @@ function doKeyMultiplyPress() {
 
 function doKeyDividePress() {
   screen.upper.push(screen.lower.join(""));
-  screen.upper.push(" ");
-  screen.upper.push("/");
-  screen.upper.push(" ");
+  screen.upper.push(" / ");
   screenUpper.innerHTML = screen.upper.join("");
 
   screen.lower = ["0"];
@@ -117,9 +108,13 @@ function doKeyEqualsPress() {
       break;
   }
 
-  // TODO: Prevent integer operations from appending ".00"
+  result = result.toFixed(2);
+
+  // Strip trailing zeroes
+  if (result.endsWith(".00")) result = result.replace(".00", "")
+
   screen.lower = [];
-  screenLower.innerHTML = result.toFixed(2);
+  screenLower.innerHTML = result;
 
   screen.upper = [];
   screenUpper.innerHTML = "";

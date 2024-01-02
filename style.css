@@ -55,7 +55,7 @@ div {
   align-items: flex-end;
   justify-content: flex-end;
   gap: var(--space);
-  flex-basis: 30%;
+  flex-basis: 28%;
   margin: var(--space);
   padding: var(--space) calc(var(--space) * 2);
   border-radius: var(--space);
@@ -65,14 +65,11 @@ div {
 }
 
 .screen .upper {
-  /* font-size: 2.5vh; */
   font-size: 0.6em;
   opacity: 0.7;
-
 }
 
 .screen .lower {
-  /* font-size: 5vh; */
   font-size: 1.2em;
 }
 
@@ -113,7 +110,7 @@ div {
   color: hsl(0, 0%, 92%);
   background-color: hsl(200, 20%, 18%);
   cursor: pointer;
-  transition: all ease 75ms;
+  transition: all ease-in-out 75ms;
 }
 
 .key:hover {
@@ -121,10 +118,14 @@ div {
 }
 
 .key:active {
-  transform: translateY(.33rem);
+  transform: translateY(.5rem);
 }
 
 .operators .key {
   border-radius: calc(var(--space) * 2.5);
   background-color: hsl(200, 30%, 24%);
+}
+
+.key-equals {
+  flex-grow: 2;
 }
