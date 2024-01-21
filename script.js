@@ -46,7 +46,7 @@ function doKeyDotPress() {
   if (!screen.lower.includes(".")) updateScreenLower(".");
 }
 
-function doKeyAddPress() {  
+function doKeyAddPress() {
   screen.upper.push(screen.lower.join(""));
   screen.upper.push(" + ");
   screenUpper.innerHTML = screen.upper.join("");
@@ -85,8 +85,6 @@ function doKeyDividePress() {
 function doKeyEqualsPress() {
   let operation = screen.upper.concat(screen.lower).join("");
 
-  operation = operation.replace(/\W/, "");
-
   const operator = operation.match(/[\+\-\*\/]/g).pop();
 
   const lhs = Number(operation.split(operator)[0]);
@@ -108,10 +106,7 @@ function doKeyEqualsPress() {
       break;
   }
 
-  result = result.toFixed(2);
-
-  // Strip trailing zeroes
-  if (result.endsWith(".00")) result = result.replace(".00", "")
+  result = Number(result.toFixed(2));
 
   screen.lower = [];
   screenLower.innerHTML = result;
@@ -122,10 +117,10 @@ function doKeyEqualsPress() {
 
 function doKeyClearPress() {
   screen.upper = []
-  screenUpper.innerHTML = screen.upper.join("");
+  screenUpper.innerHTML = "";
 
   screen.lower = ["0"];
-  screenLower.innerHTML = screen.lower.join("");
+  screenLower.innerHTML = "0";
 }
 
 function updateScreenUpper(str) {
@@ -137,6 +132,10 @@ function updateScreenUpper(str) {
 function updateScreenLower(str) {
   if (onlyZeroPresent() && str !== "0") {
     screen.lower = [];
+  }
+
+  if (screen.lower.length >= 10) {
+    return;
   }
 
   screen.lower.push(str);
